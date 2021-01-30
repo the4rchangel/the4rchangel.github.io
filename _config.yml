@@ -15,10 +15,10 @@ author: Michael
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
+#  Resources:
 #    - Beautiful Jekyll: "https://beautifuljekyll.com"
 #    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://exploits.run"
+#  Author's home: "https://exploits.run"
 
 # --- Logo --- #
 
