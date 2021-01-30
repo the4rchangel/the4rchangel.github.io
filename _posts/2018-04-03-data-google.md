@@ -3,11 +3,11 @@ layout: post
 title:  "Tales of a Man Flippant With His Data (Google)"
 author: Michael
 categories: [ Google, Privacy, Data ]
-image: assets/images/google1.gif
+image: assets/img/google1.gif
 featured: false
 hidden: false
 ---
-<p><center><img src="/assets/images/google1.gif"></center>
+<p><center><img src="/assets/img/google1.gif"></center>
 <blockquote>This is post 1 of 2 in a series on data collection. <a href="/data-facebook/">You can view post two here</a>.</blockquote></p>
 
 Recently, I decided to download my Google and Facebook data archives containing all the information they had on me. I have had a Google account since 2006 and I’ve always been an early adopter of products like Gmail and other such Google services. I have had a Facebook account since roughly 2007 probably. On both sites, I had always been very flippant with my data. I maximized the amount of access I gave the sites under the perspective of simply wanting a better experience. My motto of the past had always been “if I’m going to be served ads, they might as well be ads for things I want.” Well, the download of my Google data was ready today (at a whopping 32gb) and I was uncomfortable with, though not surprised, at the things I found in there.
@@ -16,7 +16,7 @@ The content of this blog post will be quite transparent with regard to me sharin
 
 #### SEARCHES
 
-<img src="/assets/images/google3.png" width="250" height="400" style="float: right; margin-left: 20px; margin-bottom: 5px">
+<img src="/assets/img/google3.png" width="250" height="400" style="float: right; margin-left: 20px; margin-bottom: 5px">
 I don’t know what the retention rate for data at Google is but I suspect there is no set expiration for when they stop retaining data they’ve collected on people. That being said, my archive contained obscenely specific records of everything I’ve done or searched with Google services since 2006. For example it was interesting to learn that my first Google search was on November 16th, 2006 at 11:38pm for “dictionary”. No clue why I needed a dictionary back then at that time of night but it’s a moot point now and really senseless information to be retaining. It was also fascinating to find that just 3 days after creating my Google account, I wanted to find “the end of the internet” at 1:41pm. After skimming through portions of my search history, I was shocked with… myself. There were search queries tied to my name that were immature, potentially illegal sometimes (like searching how to make homemade explosives) <i>I was a high school student, and frankly just ridiculous. All in all, the log of these search results wasn’t very helpful for me, of anything it’d probably be quite hindering to me if somebody else were to use them as a measure of myself</i>.
 
 Those were simply just the web searches. Google had beyond a decade of search queries across any platform or service they’ve ever offered. I found video searches (separate from YouTube) dating back into my high school years looking for “insane fight”, or one of my personal favorites and potentially embarrassing searches of the “Shopping” tab for things like “tv laptop” or “google internet”. Queries I’d laugh at today and would expect to see from some 70+ year old grandparent learning how to use the internet for the first time. Beyond that, the other searches they maintain records on are:
@@ -37,7 +37,7 @@ Those were simply just the web searches. Google had beyond a decade of search qu
 Google began as a search engine, and they do searching well. Far better than any of their competitors in my opinion. However, they have since extended their grasp into gathering any other data they can get their hands on. Like I said earlier, the aforementioned data I described was unsettling but not surprising, however, the data in this portion was equally unsettling and was indeed surprising to me.
 Up until 2 years ago, I had been an adamant and staunch Android fan. Ever since the G1, I have owned almost every single ‘Nexus’ or Google original branded device. I switched to iPhone for work and I’ve been very pleased with the switch. After looking at this archive, I have to say I will have a hard time switching back. In my archive was a folder simply labeled “Android”. Upon opening it, I was faced with a time and date log of each time I used every app on my Android phone. I don’t know what this data is for or why they keep a log of it years after but I was surprised to see it was in my records. For this specific archive, I should note they only date back to December 2014. I am not sure if that’s when they started logging or if I somehow dodged this function all the way up until that date but I would be surprised if other’s logs dated past this date.
 
-<img src="/assets/images/google4.png" width="300" height="400" style="float: left; margin-right: 20px; margin-bottom: 5px margin-top: 5px">
+<img src="/assets/img/google4.png" width="300" height="400" style="float: left; margin-right: 20px; margin-bottom: 5px margin-top: 5px">
 
 The data in the “Ads” file was also a bit surprising to me for a few reasons. Not only did this file contain a time/date list of every ad I’ve ever clicked through Google, it also contained certain apps that it listed as “Google Ads”. The kicker on this file is, the apps shown in this list are recent, and they’re from apps that are used by my wife on her iPhone. The only thing linking my wife and I’s Google accounts is the recovery system. Other than that, we are not in any kind of managed family or any other system that I know of that should make her apps show up in my ads list. I was surprised that 1) this ads list displayed apps and 2) they were from my wife’s phone. Apps that were recorded here for us were:
 Pandora
@@ -66,7 +66,7 @@ Beyond the things above, there was also a copy of everything in my Google Drive 
 Another fun find was a file under “Google Pay Send” which was a transaction log of any Android Pay / Google Wallet transaction I’d ever made, who the transaction was made with, and details like the last 4 numbers of my debit/credit card or my bank account.
 
 This is just a snapshot of all of the data contained in the 32GB of information I downloaded off of Google. I have since deleted most of these logs from my account management page and disabled any further logging for the things I can control. Hopefully going forward, even searches won’t be stored in a log and I can dig myself out of the data nightmare I’ve dug myself into. Thank you all so much for your time in reading this, I truly appreciate it. Be on the lookout for a followup blog when I get my Facebook archive link to sift through that.
-<p><center><img src="/assets/images/google5.png"></center>
+<p><center><img src="/assets/img/google5.png"></center>
 <hr>
 #### ADDITIONAL RESOURCES
 

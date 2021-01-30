@@ -3,7 +3,7 @@ layout: post
 title:  "Google Dorking For Group Chats and Messaging Servers"
 author: Michael
 categories: [ Google, OSINT, dorking ]
-image: assets/images/dork1.png
+image: assets/img/dork1.png
 featured: false
 hidden: true
 ---
@@ -17,7 +17,7 @@ th, td {
 }
 </style>
 
-<center><p><img src="/assets/images/dork1.png"></p></center>
+<center><p><img src="/assets/img/dork1.png"></p></center>
 
 <blockquote>Before we dive in, please understand that this is an introductory level post and for the more technically inclined, there may not be much for consumption here. I will not go in depth on many topics surrounding search engines as a whole and may not fully elaborate on some dorking elements. Please feel free to reach out if you have more questions!</blockquote>
 
@@ -27,7 +27,7 @@ For most people, searching the internet or "Googling" something has become an in
 
 #### WHAT IS A SEARCH ENGINE?
 
-<center><p><img src="/assets/images/dork2.png"></p></center>
+<center><p><img src="/assets/img/dork2.png"></p></center>
 
 Search engines are essentially servers that crawl the internet and save the locations of what they see in a database and then allow you to search them. Crawlers are scripts that reach out to web servers and navigate all the pages and links they can find to build a comprehensive picture of what is on the site and make it searchable. They do this through a variety of ways which I won't go into now, but a common way is through a site map. Many pages include a site map which is an index of every sub-page on their site. This makes it very easy for a crawler or visitor to view the file and see everything they want you to know exists on their website. You can see an example of this from Chase Bank <a href="https://www.chase.com/sitemap.xml" target="_blank">here</a>.
 
@@ -97,7 +97,7 @@ A larger and more comprehensive list of these search options can be found <a hre
 
 None of these search syntax functions are required to be used by themselves. They can be, but they become very powerful and more precise when chained together. Let's take for example this query: `inurl:edu filetype:txt "email"`. This says search for the keyword "email" and display "txt" files for sites with "edu" in the title which are typically sites related to schools.
 
-<center><p><img src="/assets/images/dork3.png"></p></center>
+<center><p><img src="/assets/img/dork3.png"></p></center>
 
 <hr>
 

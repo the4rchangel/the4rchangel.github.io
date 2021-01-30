@@ -3,11 +3,11 @@ layout: post
 title:  "Tales of a Man Flippant With His Data (Facebook)"
 author: Michael
 categories: [ Facebook, Privacy, Data ]
-image: assets/images/facebook1.gif
+image: assets/img/facebook1.gif
 featured: false
 hidden: false
 ---
-<p><center><img src="/assets/images/facebook1.gif"></center>
+<p><center><img src="/assets/img/facebook1.gif"></center>
 <blockquote>This is post 2 of 2 in a series on data collection. <a href="/data-google/">You can view post one here</a>.</blockquote></p>
 
 #### IP ADDRESSES GALORE
@@ -32,7 +32,7 @@ Lastly is a catch all list of “Administrative Records” where they have a rec
 
 #### ADS
 
-<img src="/assets/images/facebook2.png" width="250" height="300" style="float: right; margin-left: 20px; margin-bottom: 5px">
+<img src="/assets/img/facebook2.png" width="250" height="300" style="float: right; margin-left: 20px; margin-bottom: 5px">
 <p>There’s nothing really surprising here but due to the recent privacy concerns by the every day consumer, I thought I’d include this data. The top of the ads page is a list of ad “topics” that Facebook thinks are good targets for me. A particular entry I found interesting was just “Sunday”. Why are you advertising “Sunday” topics to me Facebook?! I want to know! After that is a list of specific ads that I closed or clicked and the time and date I interacted with it. Displayed ads I did not interact with were not logged. The only other information here was a rather long list of “Advertisers who uploaded a contact list with your info”. It doesn’t actually explain what that fully means but a lot of these advertisers are the usual people you would recognize like Hulu and Amazon. However, there were dozens upon dozens that I had no idea how or why they uploaded my contact info anywhere.
 
 I’ve never even been to Ohio, nor do I know what the AFP Foundation is first of all. Second of all, I don’t speak Chinese and I have absolutely no connection to anything Chinese culturally. But for some reason this advertiser uploaded my info. For the non-Chinese here like myself, that translates to “Fantastic Beasts And Where To Find Them” (if Google serves me right).</p>
@@ -40,11 +40,11 @@ I’ve never even been to Ohio, nor do I know what the AFP Foundation is first o
 #### GENERIC CATCH ALL CONTENT SECTION
 
 This section is a catch all for me, not the archive. The archive has this information neatly sorted but for time and length purposes of this blog, I will simply summarize here. You can always download your own Facebook data and see for yourself with the link at the bottom of this post.
-<img src="/assets/images/facebook3.png" width="275" height="400" style="float: left; margin-right: 20px; margin-bottom: 5px">
+<img src="/assets/img/facebook3.png" width="275" height="400" style="float: left; margin-right: 20px; margin-bottom: 5px">
 Every photo and video you’ve ever uploaded is in your archive. Not only that, your photo and camera metadata is stored with your photos you’ve uploaded. There is also a handy dandy full extraction of your Facebook timeline dating all the way back to account creation including your posts and posts others have made on your wall. Additionally, you will find a full database of any message conversation you’ve ever had with somebody, including pictures either of you have sent (your wild days aren’t fully behind you just yet). There is also a list of every event with start and end date that you’ve: created, attended, declined, or been invited to without response.
 
 Remember when poking was a thing? There’s a time/date log of pokes too.
-<p><center><img src="/assets/images/facebook4.png" width="350" height="300"></center></p>
+<p><center><img src="/assets/img/facebook4.png" width="350" height="300"></center></p>
 
 #### BUT WAIT THERE’S MORE
 

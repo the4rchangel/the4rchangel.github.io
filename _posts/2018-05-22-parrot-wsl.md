@@ -3,7 +3,7 @@ layout: post
 title:  "Parrot OS on Windows Subsystem for Linux (WSL)"
 author: Michael
 categories: [ WSL, Parrot OS ]
-image: assets/images/parrotwsl1.png
+image: assets/img/parrotwsl1.png
 featured: false
 hidden: false
 ---
@@ -26,7 +26,7 @@ Step one is, of course: install Windows Subsystem for Linux (WSL). This can be d
 If you hadn’t installed this previously, you should reboot your machine after it completes. If you already had it installed, you can just proceed to the next step.
 
 #### STEP TWO
-<p><img src="/assets/images/parrotwsl2.png"></p>
+<p><img src="/assets/img/parrotwsl2.png"></p>
 WSL still won’t do anything if you type “bash” in Command Prompt or Powershell because it needs an actual distribution to load when you type bash. So we need a distro. I decided to install “Kali Linux” from the Windows Store. This only installs a barebones version of the OS and does not come with any of the tools but it’s a good Debian based foundation for where we are going.
 
 <p><a href="https://www.microsoft.com/store/apps/9PKR34TNCV07" target="_blank">Windows Store link</a></p>
@@ -45,7 +45,7 @@ Install GNUPG. This is required for the Parrot install script to work. I don’t
 `$ sudo apt install gnupg`
 
 #### STEP FIVE
-<p><img src="/assets/images/parrotwsl3.png"></p>
+<p><img src="/assets/img/parrotwsl3.png"></p>
 This is the big install! Now we will download the install script from a Parrot repo on GitHub and run it. This will take a while as it’s a full install. You can choose one of the other options but I can’t vouch for how/if they will work. I selected option 4 on the script for the full install.
 ```
 $ wget https://gist.githubusercontent.com/the4rchangel/a679b8cd8e78f490b1b9c2bc6d95645a/raw/402dcc6bed50845553bac66f96df30d9a97946df/parrot-install.sh
@@ -55,17 +55,17 @@ $ sudo ./parrot-install.sh
 Select “4” and you’re off! The install will take a while and when it finishes bash will be broken at first. If you exit bash and go to reopen it you will be met with an error that left me digging around for a little while. We’ll fix that in the next step.
 
 #### STEP SIX
-<p><img src="/assets/images/parrotwsl4.jpeg"></p>
+<p><img src="/assets/img/parrotwsl4.jpeg"></p>
 Something in the install script from the last step breaks bash. After reading around the internet for the error code, I found out that this is caused by the “resolv.conf” file on the Linux side. I don’t know what part of the process causes this error, but you can RESOLVE it (funny eh?) by navigating the file structure in Windows and deleting the “resolv.conf” file at the directory below. When you re-launch bash it will generate new, clean, and working “resolv.conf” file.
 
 `C:\Users\USERNAME\AppData\Local\Packages\KaliLinux.54290C8133FEE_ey8k8hqnwqnmg\LocalState\rootfs\etc\resolv.conf`
-<p><img src="/assets/images/parrotwsl5.png"></p>
+<p><img src="/assets/img/parrotwsl5.png"></p>
 Now if you try “bash” again you’re going to be logged in to Parrot OS.
 
 #### STEP SEVEN
 
 We can’t have our cake and eat it too. To install all of our favorite hacking tools (next step) we are going to have to set some exclusions in Windows Defender. I made the mistake of not doing this the first time and my Defender went crazy with notifications when I first tried to run the command in the next step. Choose your own way for this method, I opted to do it by a folder exclusion at:
-<p><img src="/assets/images/parrotwsl6.png"></p>
+<p><img src="/assets/img/parrotwsl6.png"></p>
 
 With this, everything in my Linux distro should be safe from scanning and allow the rest of my machine to stay behind Windows Defender.
 

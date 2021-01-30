@@ -3,11 +3,11 @@ layout: post
 title:  "BSides Portland | OSINT CTF"
 author: Michael
 categories: [ OSINT, Passwords ]
-image: assets/images/osint1.jpeg
+image: assets/img/osint1.jpeg
 featured: false
 hidden: false
 ---
-<center><p><img src="/assets/images/osint1.jpeg" height="400" width="200"></p></center>
+<center><p><img src="/assets/img/osint1.jpeg" height="400" width="200"></p></center>
 <blockquote>The final score was close. I placed second as a solo competitor (CWRT), losing to a team of 4.</blockquote>
 
 I had the opportunity to attend the <a href="https://bsidespdx.org/" target="_blank">BSides Portland</a> event this year and I had a great time. There were some great talks this year and I feel like I’m walking away with more knowledge than I walked in with which is a success in itself. I also had the opportunity to participate in a missing persons OSINT CTF. Now this concept has only taken place a few times since its inception.
@@ -25,7 +25,7 @@ The first target I ended up finding was a male minor. He had been listed as miss
 This was a bit of relief as it verifies a couple of things: 1) He’s alive and 2) he’s okay. It also adds speculation that he’s potentially a runaway considering he’s not marked as found and he’s now identified himself among a crowd of illegal street racing and shows.
 
 The last post on the Instagram account was… a SnapChat account. Now I have a SnapChat account but I don’t really know much about it. <a href="https://twitter.com/fharding0" target="_blank">Someone next to me</a> however, who was participating in a different CTF, leaned over to me and mentioned an interesting feature of SnapChat called “Snap Map”. Now if you’re wondering what it is, it’s exactly what it sounds like. The real question is if someone has enabled that feature or not. Much to my surprise, you’ll never guess who had it enabled…
-<center><p><img src="/assets/images/osint2.jpeg"></p></center>
+<center><p><img src="/assets/img/osint2.jpeg"></p></center>
 
 I probably wouldn’t have found this one without Franklin’s help.
 

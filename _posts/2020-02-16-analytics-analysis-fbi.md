@@ -3,18 +3,18 @@ layout: post
 title:  "Analyzing Analytics (Featuring: The FBI)"
 author: Michael
 categories: [ fbi, gov, google, analytics, metrics ]
-image: assets/images/fbi1.png
+image: assets/img/fbi1.png
 featured: true
 hidden: false
 ---
-<center><p><img src="/assets/images/fbi1.png"></p></center>
+<center><p><img src="/assets/img/fbi1.png"></p></center>
 Recently while conducting some research, I found myself down the path of Google Analytics ID's as well as other analytics services. I was investigating ways to not only identify varying analytics code in sites, but to correlate them with other sites that may be linked to the same owner. Please note before further reading: I make some guesses about what I find, though that's contrary to the concept of analysis, and I am not presuming to know definitively why I am seeing what I am seeing in this specific case study. It's all just very curious to me. Dive in and take a look for yourself!
 
 <hr>
 
 #### WHAT ARE ANALYTICS ID'S?
 
-<center><p><img src="/assets/images/fbi2.png"></p></center>
+<center><p><img src="/assets/img/fbi2.png"></p></center>
 
 Various analytics services essentially give you a small chunk of code to inject into your site that reports information back to them when somebody views your website. This is generally then provided on a fancy dashboard so you can better understand the traffic coming to your site whether it's visitor counts, visitor locations, referrers, etc. Depending on the service, you may just get one unique ID to use across all of your sites or perhaps, like in the image above, you'll get an ID with appended information to distinguish sites you're monitoring. If you look at the structure of the image above, you'll see that I myself as a user have the ID `2319990`. Then, for each site or "property" I want to track, they append more information to the end of it. In the case of this site, they've added `-11` because I suppose I've previously monitored 10 other things that are now dead or gone.
 
@@ -28,15 +28,15 @@ There are two problems with this type of searching / enumeration. One of them be
 
 I didn't actually think this would be a thing. I tried finding analytics ID's for both the CIA and NSA first but nothing turned up. Personally, I think it's probably a good idea that these federal agencies aren't utilizing this if only in part from reasons I've already mentioned. Then I put the FBI in and... well let's see how this analytics research can both work successfully and provide some unnecessary visibility to the people who own the account.
 
-<center><p><img src="/assets/images/fbi3.png"></p></center>
+<center><p><img src="/assets/img/fbi3.png"></p></center>
 
 One site that will help you identify these links is called "<a href="https://builtwith.com/" target="_blank">BuiltWith"</a>. If you enter a domain in there and then click the "Relationships" tab, you'll be greeted with a list of every ID this site has observed them use, and a fancy historical record with graphs for you graph people (shown above). You'll notice that the same analytics ID linked to the FBI has appeared on a lot of other seemingly unrelated sites over the years. Of note, the unrelated sites seem to share the same ID during the same timeframe which is curious. One site in particular from the list seems to have been up with that ID for over 6 years. Maybe its something they forgot about, let's take a look.
 
-<center><p><img src="/assets/images/fbi4.png"></p></center>
+<center><p><img src="/assets/img/fbi4.png"></p></center>
 
 This site is straight out of the internet boom and has clearly never been updated since. This obviously isn't something that should be showing up in relation to the FBI, so how did it get in our list? Well if we take a brief look deeper, theres more going on here than we realize. I use <a href="https://brave.com/mic440" target="_blank">Brave Web Browser</a> because it has a lot of built in privacy functions that you'd have to add extensions in other browsers to replicate. One of them being protection against cross-site trackers. On Google.com, Brave blocks 6 trackers, all belonging to them. On this husky site from the 90s?
 
-<center><p><img src="/assets/images/fbi5.png"></p></center>
+<center><p><img src="/assets/img/fbi5.png"></p></center>
 
 Yikes. That's a whole lot of FBI hosted javascript. What does it do? I have no idea, but you probably shouldn't go to this site. To the person who read that and now absolutely has to check the site out, godspeed.
 
@@ -54,7 +54,7 @@ I found some similarities in a random sampling of pages I checked. First, they w
 
 Sometimes the Wayback Machine has trouble indexing pages for whatever reason. One of these reasons, at least in my experience, is when a site is redirecting somewhere else. If it does have trouble following the redirect however, it displays a log of where it was going.
 
-<center><p><img src="/assets/images/fbi6.png"></p></center>
+<center><p><img src="/assets/img/fbi6.png"></p></center>
 
 <hr>
 

@@ -3,7 +3,7 @@ layout: post
 title:  "TryHackMe | Advent Of Cyber 2019 (Rolling release)"
 author: Michael
 categories: [ TryHackMe, Walkthrough, CTF ]
-image: assets/images/cyberadvent.png
+image: assets/img/cyberadvent.png
 featured: false
 hidden: true
 ---
@@ -34,12 +34,12 @@ To generate the cookie, we need to create a user and login. Head over to registr
 <hr>
 <p id="task1_2"><b>Task 2: If you decode the cookie, what is the value of the fixed part of the cookie?</b><br>
 This part is where having BurpSuite begins to prove more useful than just an extension. If you view the cookie, you'll see that the "Value" is a jumbled bunch of characters. This is a base64 encoded string. One of the most popular ways to identify these is to see if they end in an equals sign "=" or "%3D" which is a an equals sign encoded in URL format. This is almost always present but not in every single case. You can copy this and google "Base64 Decode" and find any number of sites that will decode it for you, but for me, we're going to just highlight it in Burp and move it over to the "decoder" tab. If you select "Decode As > Base64" from the menu on the right, it'll spit out the decoded text. Showing the username I chose "THISISMYUSERNAME" and the answer to Task 2 which is: <code>v4er9ll1!ss</code>.<br><br>
-<center><img src="/assets/images/advent1_2_1.png" border="1"></center>
+<center><img src="/assets/img/advent1_2_1.png" border="1"></center>
 </p>
 <hr>
 <p id ="task1_3"><b>Task 3: After accessing his account, what did the user mcinventory request?</b><br>
   So how are we supposed to access mcinventory's account without their password? Well we're already onto a theme here, so let's keep it up. If we can decode from Base64, we can certainly encode with it as well. So, what if we took the name "mcinventory" and replaced it in my decoded base64 text before the answer to task 2, where my username used to be. Then, we can Base64 encode it and use that NEW value as our cookie. You can either edit your cookie with your extension in your browser and save it then refresh the page, or inject it into the <code>authid</code> field in Burp on a page reload. Let's see what happens.<br><br>
-  <center><img src="/assets/images/advent1_2_3.png" border ="1"></center><br><br>
+  <center><img src="/assets/img/advent1_2_3.png" border ="1"></center><br><br>
   We have now logged in as user "mcinventory" using their cookie. And we can see the answer to task 3 right at the top of the list which is <code>firewall</code>.</p>
   <hr>
 
@@ -51,13 +51,13 @@ This part is where having BurpSuite begins to prove more useful than just an ext
   So we have a login page facing us but it wants us to enter a different page. The first place I always check is <code>/robots.txt</code>. Most pages will have a robots file that lists pages on the site that they don't want appearing on search engines. It's always helpful to just check this, however in this case that file doesn't exist.<br><br>
 
   In this case, there are a several tools to help you go hunting. Popular ones are: <a href="https://tools.kali.org/web-applications/dirb" target="_blank">Dirb</a>, and my tool of choice <a href="https://github.com/maurosoria/dirsearch" target="_blank">Dirsearch</a>. I ran the following code in Dirsearch to check the page: <code>./dirsearch -e html -u http://ipaddresshere:3000/ -x 301,302</code>. This says search for HTML files on this server and don't show me redirects. After a short while we see the image below and the answer to task 1 which is <code>/sysadmin</code>.</p>
-  <center><img src="/assets/images/advent2_2_1.png"></center>
+  <center><img src="/assets/img/advent2_2_1.png"></center>
   <hr>
   <p id="task2_2"><b>Task 2: What is the password you found?</b><br>
     So we need to find a password. Let's head over to the page at <code>http://ipaddresshere:3000/sysadmin</code> and take a look around. This page looks just like the other page except for an admin title at the top letting you know this is an admin login. There doesn't appear to be anything standing out. We should check the source code to see what's going on behind the scenes. If you right click the page and click "View Source" or some variant of that depending on your browser, you'll see a hidden comment from the developer. It says: <code>Admin portal created by arctic digital design - check out our github repo</code>.
 
     Okay, let's head over to Github and search for <a href="https://github.com/search?q=arctic+digital+design" target="_blank">"arctic digital design"</a>. Voila! We found their Github repo, the answer to Task 2 (<code>defaultpass</code>)and a login to use on the admin portal.<br><br>
-    <center><img src="/assets/images/advent2_2.png"></center></p>
+    <center><img src="/assets/img/advent2_2.png"></center></p>
 <hr>
 <p id="task2_3"><b>Task 3: What do you have to take to the 'partay'</b><br>
   Using the login from above, you can view the entries on the page after you login to see that the party is: BYOE(Bring your own <code>eggnog</code>).</p>
@@ -69,13 +69,13 @@ This part is where having BurpSuite begins to prove more useful than just an ext
 
   <p id="task3_1"><b>Task 1: Whats the destination IP on packet number 998?</b><br>
   If you downloaded the packet capture file and open it in <a href="https://www.wireshark.org/download.html" target="_blank">Wireshark</a> you'll probably see a lot of confusing things if you've never looked at a packet capture before. I won't go into detail about most of this because the challenge has helpful documentation already. It's asking us about packet 998, so let's scroll down until our leftmost column reads "998" and find this answer.<br>
-  <center><img src="/assets/images/task3_1.png"></center><br>
+  <center><img src="/assets/img/task3_1.png"></center><br>
   If you view this line you'll see that the destination IP and answer to Task 1 is <code>63.32.89.195</code></p>
   <hr>
 
   <p id="task3_2"><b>Task 2: What item is on the Christmas list?</b><br>
       So we need to find something in here where we can read the plain text of what's going on. Two common protocols that are transmitted in plain text are HTTP and Telnet. If you search for HTTP in the Wireshark search bar, there are no results, but if you search Telnet, you'll get a couple packets. The best way to view them together is to right click one of the packets, then select: Follow > TCP Stream. This will display a window where you see the answer to Task 2 is <code>ps4</code> and something you'll need for your next task.<br>
-      <center><img src="/assets/images/task3_2.png"></center></p>
+      <center><img src="/assets/img/task3_2.png"></center></p>
 <hr>
   <p id="task3_3"><b>Task 3: Crack buddy's password!</b><br>
 Okay now we're getting into the fun stuff. This is probably one of the most nuanced tasks in hacking that everyone wants to about: cracking passwords. After this, you're going to be able to tell everyone you have cracked a password. Let's take that last line from the packet capture window we just saw that displayed buddy's username and password hash. I have stripped the excess information around it and displayed just the hash below:<br>
@@ -83,7 +83,7 @@ Okay now we're getting into the fun stuff. This is probably one of the most nuan
 Paste this into a text file and we will just call it 'hash.txt'. Now we need to run a popular password cracking program against it called <a href="https://hashcat.net/hashcat/" target="_blank">hashcat</a>. To run hashcat for cracking this password, we'll use this:<br>
 <code>hashcat -m 1800 hash.txt /usr/share/wordlists/rockyou.txt --force</code><br>
 This says run hashcat in sha512crypt mode (1800, based on documentation and the $6$ at the front) on the file hash.txt using the wordlist rockyou (at its location). What you'll get very quickly, even on a virtual machine, is the cracked password below:<br>
-<center><img src="/assets/images/task3_3.png"></center><br>
+<center><img src="/assets/img/task3_3.png"></center><br>
 Now, I'm not giving you this answer. I have covered it in red so you can see where to look once a password is cracked for yourself. Go crack a password for yourself and experience the satisfaction! I've given you everything you need. Reach out to me on <a href="https://twitter.com/the4rchangel" target="_blank">Twitter</a> or Discord (4rchAngel#5193) for additional information if you need it.
     </p>
 <hr>
@@ -145,7 +145,7 @@ Take note of the tweet she made where she said they can now make the <code>iPhon
 <hr>
 <p id="task5_4"><b>Task 4: What date did Lola first start her photography? Format: dd/mm/yyyy</b><br>
 This one utilizes a staple that I use regularly. Initial observation of the <a href="https://lolajohnson1998.wordpress.com/" target="_blank">website linked</a> in her Twitter profile is vague about when she started photography other than the phrase "In my years of experience". However, oftentimes websites contained information that has since been deleted. One way to view this is to check the <a href="https://web.archive.org/web/*/https://lolajohnson1998.wordpress.com/" target="_blank">"Wayback Machine"</a>.<br>
-<center><img src="/assets/images/advent5_4.png"></center><br>
+<center><img src="/assets/img/advent5_4.png"></center><br>
 We see someone has captured a few older versions of the page here. Let's click the oldest record and see what the site looks like. When you view the page captured here, it says "I started as a freelance photographer five years ago today!". The date of the capture is October 23rd 2019, subtract 5 years and you have <code>23/10/2014</code>.
 
 </p>

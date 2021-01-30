@@ -3,7 +3,7 @@ layout: post
 title:  "Using Password Resets for OSINT"
 author: Michael
 categories: [ OSINT, Passwords ]
-image: assets/images/passosint1.png
+image: assets/img/passosint1.png
 featured: false
 hidden: false
 ---
@@ -33,12 +33,12 @@ Initially I wanted to gather as much accurate information as possible to lay out
 #### ENUMERATING WITH RESETS
 
 Now I knew a potential email address linked to her, as well as a username scheme she commonly uses and some social media profiles. This is where the password resets can become quite useful. Many major sites will only disclose redacted information on a password reset screen but they’ll do so WITHOUT actually initiating the reset and notifying the user. This includes Facebook. So, when I took to Facebook and told them I forgot my password and entered jsmith5@yahoo.com (still an example mind you), I was able to view this:
-<p><img src="/assets/images/passosint1.png"></p>
+<p><img src="/assets/img/passosint1.png"></p>
 
 Jackpot. Now I have the length of an alternate Gmail address that appears to match the same username convention I already know she uses and I know her phone number ends in 17. So, at this point, I can take to Gmail and begin starting a password reset process there to try and guess the email address. I begin guessing different naming patterns and repetitively meet an “account doesn't exist” error. I counted the characters in the redacted address I found on Facebook and realized it was one character longer than the other username I had found. At this point, I inserted the initial from the middle/maiden name on Facebook at various points and after a few more guesses, a password reset screen for a legitimate Gmail address came up. I have now identified and validated her Gmail address.
 
 Now that I have 2 email addresses, I want to find that phone number and I will be easily able to identify it because I know it ends in 17. I did some Google dorking for that Gmail address and on the first page of the results I was shocked to come across this:
-<p><img src="/assets/images/passosint2.png"></p>
+<p><img src="/assets/img/passosint2.png"></p>
 
 #### MAKING CONTACT
 
