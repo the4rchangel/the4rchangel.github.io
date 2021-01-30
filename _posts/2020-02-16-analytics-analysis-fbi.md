@@ -6,6 +6,11 @@ categories: [ fbi, gov, google, analytics, metrics ]
 image: assets/img/fbi1.png
 featured: true
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <center><p><img src="/assets/img/fbi1.png"></p></center>
 Recently while conducting some research, I found myself down the path of Google Analytics ID's as well as other analytics services. I was investigating ways to not only identify varying analytics code in sites, but to correlate them with other sites that may be linked to the same owner. Please note before further reading: I make some guesses about what I find, though that's contrary to the concept of analysis, and I am not presuming to know definitively why I am seeing what I am seeing in this specific case study. It's all just very curious to me. Dive in and take a look for yourself!

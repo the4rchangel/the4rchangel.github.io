@@ -6,6 +6,11 @@ categories: [ OSINT, Facebook ]
 image: assets/img/marketplace1.png
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <center><p><img src="/assets/img/marketplace1.png" height="200" width="400"></p></center>
 

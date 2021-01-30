@@ -6,6 +6,11 @@ categories: [ OSINT, Passwords ]
 image: assets/img/osint1.jpeg
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <center><p><img src="/assets/img/osint1.jpeg" height="400" width="200"></p></center>
 <blockquote>The final score was close. I placed second as a solo competitor (CWRT), losing to a team of 4.</blockquote>

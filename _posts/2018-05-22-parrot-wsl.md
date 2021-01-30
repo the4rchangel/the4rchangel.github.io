@@ -6,6 +6,11 @@ categories: [ WSL, Parrot OS ]
 image: assets/img/parrotwsl1.png
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 
 <blockquote>Due to Parrot no longer actively maintaining the Github repo for this install script, I have ported it to a gist on my own account. I am now working to actively maintain it to ensure it continues working. As of Jan 13, 2020, it appears that the script is currently working as intended and the links on this blog have been updated to reflect its new location. </blockquote>

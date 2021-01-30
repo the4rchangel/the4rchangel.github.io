@@ -6,6 +6,11 @@ categories: [ scammers, OSINT, ads, youtube, SEO ]
 image: assets/img/vincent1.png
 featured: true
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <blockquote>Due to a large amount of screenshots with text, this blog is best read on a desktop as opposed to a phone. This post is also rather long so you may want to get settled in.</blockquote>
 

@@ -6,6 +6,11 @@ categories: [ OSINT, Passwords ]
 image: assets/img/passosint1.png
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 This post is part practical, but mostly story. I’ll go through how I use password resets on various services to gather fragments of information on someone, alongside a story of how I piece those together to get more definitive information. There may be tools out there that do something similar to this but my process is predominately manual. There is no step by step guide here as it’s more about attention to detail and your ability to piece things together. This is just an example of how I put that to use personally.
 

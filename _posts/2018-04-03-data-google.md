@@ -5,7 +5,11 @@ author: Michael
 categories: [ Google, Privacy, Data ]
 image: assets/img/google1.gif
 featured: false
-hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <p><center><img src="/assets/img/google1.gif"></center>
 <blockquote>This is post 1 of 2 in a series on data collection. <a href="/data-facebook/">You can view post two here</a>.</blockquote></p>

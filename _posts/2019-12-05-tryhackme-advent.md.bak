@@ -6,6 +6,11 @@ categories: [ TryHackMe, Walkthrough, CTF ]
 image: assets/img/cyberadvent.png
 featured: false
 hidden: true
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 
 <blockquote>Special thanks to <a href="https://tryhackme.com/room/25daysofchristmas" target="_blank">TryHackMe</a> for creating this diverse introductory challenge for Advent this year.
@@ -169,6 +174,6 @@ If you right click the image of the woman, you can "Copy Image Location" or some
     </p>
 <hr>
   <p id="task6_3"><b>Task 3: What was hidden within the file?</b><br>
-Answer releasing tomorrow after 24 hour delay. Reach out if you need guidance. 
+Answer releasing tomorrow after 24 hour delay. Reach out if you need guidance.
 </p>
 <hr>

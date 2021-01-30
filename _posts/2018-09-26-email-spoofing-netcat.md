@@ -6,6 +6,11 @@ categories: [ netcat, telnet, spoofing, email ]
 image: assets/img/netcat3.png
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <blockquote> I have also written a follow up post about <a href="https://exploits.run/email-spoofing-powershell/">spoofing with powershell here</a>.</blockquote>
 Recently, while having a discussion with a security research team I’m on, we stumbled into discussion about email spoofing. This ultimately led to all sorts of shenanigans including an email from the President himself! The more we talked the more we discussed the ease of pulling off something like this against the average user. In this post, I plan to examine basic concepts of email and email spoofing though, of course, it will not be exhaustive and you should do some additional research on how to identify emails like this or advanced spoofing concepts.

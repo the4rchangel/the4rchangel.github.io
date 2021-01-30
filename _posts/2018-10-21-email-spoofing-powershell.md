@@ -6,6 +6,11 @@ categories: [ powershell, spoofing, email ]
 image: assets/img/spoofps1.png
 featured: false
 hidden: false
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
 ---
 <p><img src="/assets/img/spoofps1.png"></p>
 I had previously written about <a href="/email-spoofing/netcat">Email Spoofing With Netcat/Telnet<a/> and it was a seemingly instant hit. Even though the same commands were applicable to Windows users through telnet, which is off by default on Windows installations, or netcat if you chose to install it, neither is an immediate “pickup and go” solution. So both of those methods, while native to most Linux distros, require some added effort for Windows users to take advantage of them. While I was doing some research on this, I discovered there’s a built in Powershell cmdlet that allows you to do the same thing on Windows and seemingly much easier in my opinion.
