@@ -11,7 +11,7 @@ thumbnail-img: /assets/img/google1.gif
 #share-img: /assets/img/path.jpg
 #tags: [books, test]hidden: false
 ---
-<p><center><img src="/assets/img/google1.gif"></center>
+<!--<p><center><img src="/assets/img/google1.gif"></center>-->
 <blockquote>This is post 1 of 2 in a series on data collection. <a href="/data-facebook/">You can view post two here</a>.</blockquote></p>
 
 Recently, I decided to download my Google and Facebook data archives containing all the information they had on me. I have had a Google account since 2006 and I’ve always been an early adopter of products like Gmail and other such Google services. I have had a Facebook account since roughly 2007 probably. On both sites, I had always been very flippant with my data. I maximized the amount of access I gave the sites under the perspective of simply wanting a better experience. My motto of the past had always been “if I’m going to be served ads, they might as well be ads for things I want.” Well, the download of my Google data was ready today (at a whopping 32gb) and I was uncomfortable with, though not surprised, at the things I found in there.
