@@ -6,8 +6,8 @@ categories: [ Google, Privacy, Data ]
 image: assets/img/google1.gif
 featured: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
+cover-img: /assets/img/google1.gif
+thumbnail-img: /assets/img/google1.gif
 #share-img: /assets/img/path.jpg
 #tags: [books, test]hidden: false
 ---
