@@ -1,10 +1,8 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Exploits.run exists to equip users, operators, practitioners, and all otherwise curious people in conducting efficient OSINT investigations.
 ---
-
-<blockquote>Exploits.run exists to equip users, operators, practitioners, and all otherwise curious people in conducting efficient OSINT investigations.</blockquote>
 
 In the worlds of OSINT and hacking, there are any number of resources and methodologies out there. Everyone comes at problems with their own perspectives, tools, eyes, and ideas. In both areas, it can be just as much of an art to how a problem is solved as it is a science.
 
