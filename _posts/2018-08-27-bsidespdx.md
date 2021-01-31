@@ -7,9 +7,9 @@ permalink: /bsidespdx/
 featured: false
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-cover-img: /assets/img/osint1.jpeg
-thumbnail-img: /assets/img/osint1.jpeg
-share-img: /assets/img/osint1.jpeg
+cover-img: /assets/img/osint2.jpeg
+thumbnail-img: /assets/img/osint2.jpeg
+share-img: /assets/img/osint2.jpeg
 ---
 
 <blockquote>The final score was close. I placed second as a solo competitor (CWRT), losing to a team of 4.</blockquote>
