@@ -16,6 +16,8 @@ share-img: /assets/img/osint2.jpeg
 
 I had the opportunity to attend the <a href="https://bsidespdx.org/" target="_blank">BSides Portland</a> event this year and I had a great time. There were some great talks this year and I feel like I’m walking away with more knowledge than I walked in with which is a success in itself. I also had the opportunity to participate in a missing persons OSINT CTF. Now this concept has only taken place a few times since its inception.
 
+<img src="/assets/img/osint1.jpeg">
+
 <a href="https://www.tracelabs.org/" target="_blank">Trace Labs</a> has planned out and launched the first of its kind <a href="https://www.tracelabs.org/2018/07/the-worlds-first-osint-ctf-for-missing-persons/" target="_blank">“missing persons CTF”</a>. It operates like a traditional “capture the flag” competition only instead of flags, you’re trying to collect information on actual missing persons that can be used to assist law enforcement and their families in finding them. I was surprised to be able to walk away grabbing second place working by myself but I was dedicated to doing everything I could during that time to tack people down. Before I talk about my experience, I am pleased to announce that 3 of the 8 people were actually able to be found (in the sense that we were able to establish their general location and that they were safe). Of those three, one was actually successfully reunited with their family already but the missing persons systems didn’t reflect that.
 
 #### FINDING THE PEOPLE
@@ -29,9 +31,8 @@ The first target I ended up finding was a male minor. He had been listed as miss
 This was a bit of relief as it verifies a couple of things: 1) He’s alive and 2) he’s okay. It also adds speculation that he’s potentially a runaway considering he’s not marked as found and he’s now identified himself among a crowd of illegal street racing and shows.
 
 The last post on the Instagram account was… a SnapChat account. Now I have a SnapChat account but I don’t really know much about it. <a href="https://twitter.com/fharding0" target="_blank">Someone next to me</a> however, who was participating in a different CTF, leaned over to me and mentioned an interesting feature of SnapChat called “Snap Map”. Now if you’re wondering what it is, it’s exactly what it sounds like. The real question is if someone has enabled that feature or not. Much to my surprise, you’ll never guess who had it enabled…
-<center><p><img src="/assets/img/osint2.jpeg"></p></center>
-
-I probably wouldn’t have found this one without Franklin’s help.
+<center><p><img src="/assets/img/osint2.jpeg">
+<blockquote>I probably wouldn’t have found this one without Franklin’s help.</blockquote></p></center>
 
 #### THE ELOPING FOSTER CHILD
 
