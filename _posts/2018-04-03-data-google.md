@@ -5,6 +5,7 @@ author: Michael
 categories: [ Google, Privacy, Data ]
 image: assets/img/google1.gif
 featured: false
+permalink: /data-google/
 #subtitle: Excerpt from Soulshaping by Jeff Brown
 cover-img: /assets/img/google1.gif
 thumbnail-img: /assets/img/google1.gif
