@@ -2,19 +2,18 @@
 layout: post
 title:  "The Curious Case of Vincent Briatore"
 author: Michael
-categories: [ scammers, OSINT, ads, youtube, SEO ]
-image: assets/img/vincent1.png
+tags: [ scammers, OSINT, ads, youtube, SEO ]
+permalink: /uncovering-a-scam/
 featured: true
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/vincent1.png
+thumbnail-img: /assets/img/vincent1.png
+share-img: /assets/img/vincent1.png
 ---
+
 <blockquote>Due to a large amount of screenshots with text, this blog is best read on a desktop as opposed to a phone. This post is also rather long so you may want to get settled in.</blockquote>
 
-<center><p><img style="border:2px solid black;" src="/assets/img/vincent1.png"></p></center>
 Many of you know that I use <a href="https://brave.com/mic440" target="_blank">Brave</a> as my daily browser. One of the features I love is that I can elect to see pop up ads (infrequently) in exchange for <a href="https://basicattentiontoken.org/" target="_blank">BAT</a>-- a utility token with some value similar to cryptocurrency yet distinct. Recently I was served up an ad for a site called <a href="https://vidleap.com/start" target="_blank">VidLeap</a> with some pretty outrageous claims. It's a teaching course led by a man named Vincent Briatore that claims he can walk you through setting up a Youtube channel and brand that <i>may</i> earn you up to 1 million followers, 100 million views, and $100k a month in revenue in only 4 weeks.
 
 <center><p><img style="border:2px solid black;" src="/assets/img/vincent20.png">

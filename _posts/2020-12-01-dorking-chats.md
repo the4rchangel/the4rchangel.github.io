@@ -2,16 +2,16 @@
 layout: post
 title:  "Google Dorking For Group Chats and Messaging Servers"
 author: Michael
-categories: [ Google, OSINT, dorking ]
-image: assets/img/dork1.png
+tags: [ Google, OSINT, dorking ]
+permalink: /dorking-chats/
 featured: false
 hidden: true
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/dork1.png
+thumbnail-img: /assets/img/dork1.png
+share-img: /assets/img/dork1.png
 ---
+
 <style>
 table, th, td {
   border: 1px solid black;
@@ -21,8 +21,6 @@ th, td {
   padding: 15px;
 }
 </style>
-
-<center><p><img src="/assets/img/dork1.png"></p></center>
 
 <blockquote>Before we dive in, please understand that this is an introductory level post and for the more technically inclined, there may not be much for consumption here. I will not go in depth on many topics surrounding search engines as a whole and may not fully elaborate on some dorking elements. Please feel free to reach out if you have more questions!</blockquote>
 

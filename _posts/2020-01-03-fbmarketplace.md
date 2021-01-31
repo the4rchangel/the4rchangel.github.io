@@ -2,17 +2,15 @@
 layout: post
 title:  "Facebook | Uncovering Seller Info Without Login"
 author: Michael
-categories: [ OSINT, Facebook ]
-image: assets/img/marketplace1.png
+tags: [ OSINT, Facebook ]
+permalink: /fbmarketplace/
 featured: false
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/marketplace1.png
+thumbnail-img: /assets/img/marketplace1.png
+share-img: /assets/img/marketplace1.png
 ---
-<center><p><img src="/assets/img/marketplace1.png" height="200" width="400"></p></center>
 
 <p>I was doing some research this week on <a href="https://www.facebook.com/marketplace/" target="_blank">Facebook Marketplace</a> looking for some... unethically acquired and resold items and the sellers behind them. However, my research was limited to only acquiring data without being logged into a Facebook account. Finding the sellers behind the items becomes more troublesome in this scenario as Facebook doesn't display the seller information on Marketplace posts if you are not logged in.</p>
 

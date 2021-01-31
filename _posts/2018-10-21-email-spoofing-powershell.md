@@ -2,17 +2,15 @@
 layout: post
 title:  "Email Spoofing With Powershell"
 author: Michael
-categories: [ powershell, spoofing, email ]
-image: assets/img/spoofps1.png
+tags: [ powershell, spoofing, email ]
 featured: false
+permalink: /email-spoofing-powershell/
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/spoofps1.png
+thumbnail-img: /assets/img/spoofps1.png
+share-img: /assets/img/spoofps1.png
 ---
-<p><img src="/assets/img/spoofps1.png"></p>
 I had previously written about <a href="/email-spoofing/netcat">Email Spoofing With Netcat/Telnet<a/> and it was a seemingly instant hit. Even though the same commands were applicable to Windows users through telnet, which is off by default on Windows installations, or netcat if you chose to install it, neither is an immediate “pickup and go” solution. So both of those methods, while native to most Linux distros, require some added effort for Windows users to take advantage of them. While I was doing some research on this, I discovered there’s a built in Powershell cmdlet that allows you to do the same thing on Windows and seemingly much easier in my opinion.
 <center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Powershell has a built in cmdlet called &quot;Send-MailMessage&quot; that makes email spoofing a breeze. One line and you can send HTML, Attachments, High Priority, whatever the heart desires. <a href="https://twitter.com/hashtag/Email?src=hash&amp;ref_src=twsrc%5Etfw">#Email</a> <a href="https://twitter.com/hashtag/EmailSpoofing?src=hash&amp;ref_src=twsrc%5Etfw">#EmailSpoofing</a> <a href="https://twitter.com/hashtag/Spoofing?src=hash&amp;ref_src=twsrc%5Etfw">#Spoofing</a> <a href="https://twitter.com/hashtag/Powershell?src=hash&amp;ref_src=twsrc%5Etfw">#Powershell</a> <a href="https://t.co/lSDYh8tEdg">pic.twitter.com/lSDYh8tEdg</a></p>&mdash; Michael (@The4rchangel) <a href="https://twitter.com/The4rchangel/status/1053047816270995457?ref_src=twsrc%5Etfw">October 18, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <blockquote>People ended up pretty excited about this cmdlet.</blockquote></center>

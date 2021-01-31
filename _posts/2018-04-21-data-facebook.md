@@ -2,18 +2,17 @@
 layout: post
 title:  "Tales of a Man Flippant With His Data (Facebook)"
 author: Michael
-categories: [ Facebook, Privacy, Data ]
-image: assets/img/facebook1.gif
+tags: [ Facebook, Privacy, Data ]
 featured: false
+permalink: /data-facebook/
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/facebook1.gif
+thumbnail-img: /assets/img/facebook1.gif
+share-img: /assets/img/facebook1.gif
 ---
-<p><center><img src="/assets/img/facebook1.gif"></center>
-<blockquote>This is post 2 of 2 in a series on data collection. <a href="/data-google/">You can view post one here</a>.</blockquote></p>
+
+<blockquote>This is post 2 of 2 in a series on data collection. <a href="/data-google/">You can view post one here</a>.</blockquote>
 
 #### IP ADDRESSES GALORE
 

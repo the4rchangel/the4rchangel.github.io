@@ -2,17 +2,16 @@
 layout: post
 title:  "BSides Portland | OSINT CTF"
 author: Michael
-categories: [ OSINT, Passwords ]
-image: assets/img/osint1.jpeg
+tags: [ OSINT, Passwords ]
+permalink: /bsidespdx/
 featured: false
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+cover-img: /assets/img/osint1.jpeg
+thumbnail-img: /assets/img/osint1.jpeg
+share-img: /assets/img/osint1.jpeg
 ---
-<center><p><img src="/assets/img/osint1.jpeg" height="400" width="200"></p></center>
+
 <blockquote>The final score was close. I placed second as a solo competitor (CWRT), losing to a team of 4.</blockquote>
 
 I had the opportunity to attend the <a href="https://bsidespdx.org/" target="_blank">BSides Portland</a> event this year and I had a great time. There were some great talks this year and I feel like I’m walking away with more knowledge than I walked in with which is a success in itself. I also had the opportunity to participate in a missing persons OSINT CTF. Now this concept has only taken place a few times since its inception.

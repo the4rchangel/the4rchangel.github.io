@@ -2,16 +2,16 @@
 layout: post
 title:  "Search Engine Dorking (Google Case Study)"
 author: Michael
-categories: [ Google, OSINT, dorking ]
-image: assets/img/dork1.png
+tags: [ Google, OSINT, dorking ]
+permalink: /google-dorking/
 featured: false
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/path.jpg
-#thumbnail-img: /assets/img/thumb.png
-#share-img: /assets/img/path.jpg
-#tags: [books, test]hidden: false
+#cover-img: /assets/img/dork1.png
+#thumbnail-img: /assets/img/dork1.png
+#share-img: /assets/img/dork1.png
 ---
+
 <style>
 table, th, td {
   border: 1px solid black;
