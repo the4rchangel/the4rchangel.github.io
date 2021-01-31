@@ -22,8 +22,6 @@ th, td {
 }
 </style>
 
-<center><p><img src="/assets/img/dork1.png"></p></center>
-
 <blockquote>Before we dive in, please understand that this is an introductory level post and for the more technically inclined, there may not be much for consumption here. I will not go in depth on many topics surrounding search engines as a whole and may not fully elaborate on some dorking elements. Please feel free to reach out if you have more questions!</blockquote>
 
 For most people, searching the internet or "Googling" something has become an intricate part of our lives. Anytime we want to know something we can just pull out our phone, sit at our computer, and even for many just talk to the smart devices in your house to get search results from Google or other search engines. However, few people understand or realize the power of the search engines we use today so I hope to examine ways we can get more refined results and even identify things search engines have indexed (put in their results) that the owners of that content never intended to be shared.
