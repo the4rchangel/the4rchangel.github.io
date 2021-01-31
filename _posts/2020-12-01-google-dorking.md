@@ -7,9 +7,9 @@ permalink: /google-dorking/
 featured: false
 hidden: false
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-#cover-img: /assets/img/dork1.png
-#thumbnail-img: /assets/img/dork1.png
-#share-img: /assets/img/dork1.png
+cover-img: /assets/img/dork1.png
+thumbnail-img: /assets/img/dork1.png
+share-img: /assets/img/dork1.png
 ---
 
 <style>
