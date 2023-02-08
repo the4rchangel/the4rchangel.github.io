@@ -116,7 +116,7 @@ footer-link-col: "#404040"
 # Suggest a colour for mobile browsers to use as the browser's theme. This is only supported by a few mobile browsers.
 #mobile-theme-col: "#0085A1"
 
-# For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
+# For any extra visual customization, you can additional CSS files in every page on your site. List any custom CSS files here
 #site-css:
 #  - "/assets/css/custom-styles.css"
 
@@ -211,7 +211,8 @@ defaults:
     values:
       layout: "page"
 
-include: [".well-known"]
+include:
+  - ".well-known"
 
 # Exclude these files from production site
 exclude:
