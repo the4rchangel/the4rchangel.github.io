@@ -11,11 +11,11 @@ thumbnail-img: /assets/img/manler-analysis.png
 share-img: /assets/img/manler-analysis.png
 ---
 
-This post is part technical deep-dive, part forensic investigation story. I'll walk through how I discovered and analyzed a sophisticated cryptocurrency theft operation that uses advanced JavaScript obfuscation to steal funds by manipulating withdrawal forms. There are tools out there for this kind of analysis, but I built my own set of Python scripts to really understand what was happening under the hood. This isn't a step-by-step tutorial—it's more about the process of investigation, the patterns I found, and what they reveal about how these attacks work.
+This post is part technical deep-dive, part forensic investigation story. I'll walk through how I discovered and analyzed a sophisticated cryptocurrency theft operation that uses advanced JavaScript obfuscation to steal funds by manipulating withdrawal forms. There are tools out there for this kind of analysis, but I built my own set of Python scripts to really understand what was happening under the hood. This isn't a step-by-step tutorial, it's more about the process of investigation, the patterns I found, and what they reveal about how these attacks work.
 
 #### THE INITIAL TIP
 
-Someone reached out asking me to take a look at `https://manler.cc/payouts/account/`. They said something felt off about the site—it was supposed to be a Bitcoin mining payout page, but the behavior seemed suspicious. I'm always curious about these kinds of reports, so I fired up a browser and took a look.
+Someone reached out asking me to take a look at `https://manler.cc/payouts/account/`. They said something felt off about the site, it was supposed to be a Bitcoin mining payout page, but the behavior seemed suspicious. I'm always curious about these kinds of reports, so I fired up a browser and took a look.
 
 At first glance, it looked legitimate. Clean interface, professional design, a withdrawal form asking for wallet addresses. Nothing immediately screamed "scam" to me. But when you've been doing this long enough, you develop a sense for when something doesn't add up. The site was asking users to enter their wallet addresses to withdraw funds from their "mining earnings." That's a common enough pattern, but something about it felt engineered.
 
@@ -77,7 +77,7 @@ But I still needed to understand what the code was actually *doing*.
 
 That 3.3MB script was heavily obfuscated. I built a forensic analysis tool to systematically detect obfuscation patterns. Here's what I found:
 
-**907 instances** of `Function()` constructor calls. This is a classic obfuscation technique—instead of writing functions normally, the code generates them dynamically at runtime. It makes static analysis nearly impossible because you can't see what the function does until it executes.
+**907 instances** of `Function()` constructor calls. This is a classic obfuscation technique, instead of writing functions normally, the code generates them dynamically at runtime. It makes static analysis nearly impossible because you can't see what the function does until it executes.
 
 **58 instances** of Unicode encoding (`\u002F` instead of `/`).  
 **36 instances** of hex encoding (`\x2F` instead of `/`).  
@@ -86,7 +86,7 @@ That 3.3MB script was heavily obfuscated. I built a forensic analysis tool to sy
 
 The entire script was minified into a single line with variable names shortened to 1-2 characters. This is multi-layered obfuscation designed to make analysis as difficult as possible.
 
-But obfuscation doesn't make code safe—it just makes it harder to analyze. I kept digging.
+But obfuscation doesn't make code safe, it just makes it harder to analyze. I kept digging.
 
 #### FINDING THE MALICIOUS PATTERNS
 
@@ -147,7 +147,7 @@ The entire attack happens invisibly in the background. The user sees a normal fo
 
 Those thirteen payment endpoints I found earlier? Each one likely maps to a different attacker wallet address stored server-side. The parameter `p` (like `p=53` or `p=y264`) probably tells the server which wallet to use.
 
-I tried to find the actual wallet addresses in the client-side code, but they weren't there. The attackers are smart—they store the wallet addresses server-side in the `/pay.php` script or a database. This means:
+I tried to find the actual wallet addresses in the client-side code, but they weren't there. The attackers are smart, they store the wallet addresses server-side in the `/pay.php` script or a database. This means:
 
 - They can change addresses without updating client code
 - Addresses aren't visible in browser dev tools
@@ -159,7 +159,7 @@ To find the actual wallet addresses, you'd need to either:
 - Analyze blockchain transactions from known victims
 - Get access to the server-side code (unlikely)
 
-The most practical approach is blockchain analysis—track where victim funds actually go, and that reveals the attacker wallets.
+The most practical approach is blockchain analysis, track where victim funds actually go, and that reveals the attacker wallets.
 
 #### WHY THIS IS DANGEROUS
 
@@ -257,7 +257,7 @@ For anyone investigating similar sites, here are the key indicators I found:
 
 #### FINAL THOUGHTS
 
-This was a well-engineered attack. The combination of obfuscation, form interception, and server-side address storage creates a theft mechanism that's difficult to detect and analyze. But it's not perfect—the patterns are still there if you know what to look for.
+This was a well-engineered attack. The combination of obfuscation, form interception, and server-side address storage creates a theft mechanism that's difficult to detect and analyze. But it's not perfect, the patterns are still there if you know what to look for.
 
 For users, the takeaway is simple: be extremely cautious when entering wallet addresses on any site. Verify the site's legitimacy, double-check addresses before confirming transactions, and use browser extensions that can detect address manipulation.
 
