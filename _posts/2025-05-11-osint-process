@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "OSINT Is Not Just Data Gathering"
+author: Michael
+tags: [ OSINT, Intelligence, Tradecraft ]
+permalink: /osint-is-not-just-data/
+featured: false
+hidden: false
+cover-img: /assets/img/osint-process.png
+thumbnail-img: /assets/img/osint-process.png
+share-img: /assets/img/osint-process.png
+---
+
+Everyone wants to be an OSINT analyst these days. Scraping Shodan, running a few Google dorks, maybe linking a scammer’s Telegram handle to a throwaway Gmail—that’s open-source intelligence, right?
+
+Sort of. But mostly not.
+
+The truth is, **OSINT isn't just the collection of data**. That’s reconnaissance. That’s enumeration. Those are important phases, but they’re not intelligence. Real OSINT starts after the search bar closes and the spreadsheet opens.
+
+---
+
+## The Intelligence Process: Not Optional
+
+Ask any intelligence professional, and they’ll point you to a cycle. The **intelligence cycle** isn’t some bureaucratic artifact—it’s the foundation that separates raw information from real insight.
+
+Let’s walk through it, briefly:
+
+1. **Planning and Direction**  
+   Every op needs a question. “What infrastructure does this threat actor control?” is better than “Let’s see what we find.” Good OSINT starts with a hypothesis, not a hunch.
+
+2. **Collection**  
+   This is the sexy part everyone talks about. Scrapers, recon tools, APIs, archives. It's easy to get addicted to this stage—so much data, so little time. But don’t mistake motion for progress.
+
+3. **Processing and Exploitation**  
+   Here’s where your CLI fu matters. Parsing JSON, normalizing domains, deobfuscating obfuscated data—all the glue work that makes datasets usable. This is where data becomes digestible.
+
+4. **Analysis and Production**  
+   The hard part. This is judgment. Pattern recognition. Inferring intent from behavior. Knowing when a piece of data matters and when it’s just noise. This is where raw becomes real.
+
+5. **Dissemination**  
+   You don’t get points for intel nobody sees. Whether it's a PDF report, an email alert, or a tweet thread, your work has to move. Knowing your audience is part of the job.
+
+6. **Feedback**  
+   What did the consumer actually *do* with your intel? Did it change behavior, policy, or posture? That feedback tightens the loop. Skipping it is how you end up chasing your tail.
+
+---
+
+## OSINT Is Intelligence, Not Just Open Sources
+
+The “open-source” part matters. But the **intelligence** part matters more.
+
+Finding a domain is collection. Mapping it to a scam ring with a consistent typo pattern and confirming its reuse across multiple affiliate sites? That’s analysis. That’s tradecraft.
+
+If your "intel" can't answer a question, support a decision, or reduce uncertainty—then it's just trivia with a badge.
+
+---
+
+## Stop Worshipping the Toolchain
+
+This field doesn’t need another Maltego graph or another 40-tab browser screenshot. It needs reasoning. Synthesis. Analysts who can go beyond “look what I found” and instead say, “here’s what this means.”
+
+You can’t automate judgment. You can’t GitHub cognition.
+
+---
+
+## Final Thought
+
+If you’re serious about OSINT, take your brain more seriously than your bookmarks. The data is public, but the insight is key.
+
+---

@@ -1,0 +1,179 @@
+---
+layout: post
+title:  "TryHackMe | Advent Of Cyber 2019 (Rolling release)"
+author: Michael
+categories: [ TryHackMe, Walkthrough, CTF ]
+image: assets/img/cyberadvent.png
+featured: false
+hidden: true
+#subtitle: Excerpt from Soulshaping by Jeff Brown
+#cover-img: /assets/img/path.jpg
+#thumbnail-img: /assets/img/thumb.png
+#share-img: /assets/img/path.jpg
+#tags: [books, test]hidden: false
+---
+
+<blockquote>Special thanks to <a href="https://tryhackme.com/room/25daysofchristmas" target="_blank">TryHackMe</a> for creating this diverse introductory challenge for Advent this year.
+
+Don't cheat yourself on this. These challenges are designed to teach you foundational skills that will be of such great value to you as you delve into penetration testing, bug bounty hunting, or any other related field. Don't copy and paste these answers, but work it out yourself so you can learn by getting your hands on the challenges. If you have any questions or need additional information, reach out to me on Twitter at https://twitter.com/the4rchangel or Discord (4rchAngel#5193).
+</blockquote>
+<hr>
+<b>EASY NAVIGATION:</b>
+<ul>
+  <li>Day 1: <a href="#task1_1">Task 1</a>, <a href="#task1_2">Task 2</a>, <a href="#task1_3">Task 3</a></li>
+  <li>Day 2: <a href="#task2_1">Task 1</a>, <a href="#task2_2">Task 2</a>, <a href="#task2_3">Task 3</a></li>
+  <li>Day 3: <a href="#task3_1">Task 1</a>, <a href="#task3_2">Task 2</a>, <a href="#task3_3">Task 3</a></li>
+  <li>Day 4: <a href="#task4_1">Task 1</a>, <a href="#task4_2">Task 2</a>, <a href="#task4_3">Task 3</a>, <a href="#task4_4">Task 4</a>, <a href="#task4_5">Task 5</a>, <a href="#task4_6">Task 6</a>, <a href="#task4_7">Task 7</a></li>
+  <li>Day 5: <a href="#task5_1">Task 1</a>, <a href="#task5_2">Task 2</a>, <a href="#task5_3">Task 3</a>, <a href="#task5_4">Task 4</a>, <a href="#task5_5">Task 5</a></li>
+  <li>Day 6: <a href="#task6_1">Task 1</a>, <a href="#task6_2">Task 2</a>, <a href="#task6_3">Task 3</a></li>
+  </ul>
+  <hr>
+#### DAY ONE - Inventory Management
+
+<p>The first day it looks like we're looking at a web challenge. The instructions point us to a web server at <code>http://ipaddresshere:3000</code>. Once the machine boots up, if you navigate to that address you're greeted with a login page for the "Christmas Inventory List".</p>
+
+<p id="task1_1"><b>Task 1: What is the name of the cookie used for authentication?</b><br>
+So we know we need to look at a cookie here. There are a couple of ways we can do this. When working with web applications, many people favor using <a href="https://portswigger.net/burp" target="_blank">BurpSuite</a>. BurpSuite can be pretty daunting for beginners who have never done things like this before, but it's what I'll be using. However, it's worth honorable mention that all major browsers have add-ons or extensions that can be added to them to view and manipulate cookies. On Chrome, I use <a href="https://chrome.google.com/webstore/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm?hl=en" target="_blank">"Cookie-Editor"</a>.
+
+To generate the cookie, we need to create a user and login. Head over to registration and enter whatever information you'd like. When you get back to the login, login with that user. At this point, you have your cookie. You can view it in your extension now, or if you caught it in BurpSuite during the login, you'll see the answer to Task 1 is <code>authid</code>.</p>
+<hr>
+<p id="task1_2"><b>Task 2: If you decode the cookie, what is the value of the fixed part of the cookie?</b><br>
+This part is where having BurpSuite begins to prove more useful than just an extension. If you view the cookie, you'll see that the "Value" is a jumbled bunch of characters. This is a base64 encoded string. One of the most popular ways to identify these is to see if they end in an equals sign "=" or "%3D" which is a an equals sign encoded in URL format. This is almost always present but not in every single case. You can copy this and google "Base64 Decode" and find any number of sites that will decode it for you, but for me, we're going to just highlight it in Burp and move it over to the "decoder" tab. If you select "Decode As > Base64" from the menu on the right, it'll spit out the decoded text. Showing the username I chose "THISISMYUSERNAME" and the answer to Task 2 which is: <code>v4er9ll1!ss</code>.<br><br>
+<center><img src="/assets/img/advent1_2_1.png" border="1"></center>
+</p>
+<hr>
+<p id ="task1_3"><b>Task 3: After accessing his account, what did the user mcinventory request?</b><br>
+  So how are we supposed to access mcinventory's account without their password? Well we're already onto a theme here, so let's keep it up. If we can decode from Base64, we can certainly encode with it as well. So, what if we took the name "mcinventory" and replaced it in my decoded base64 text before the answer to task 2, where my username used to be. Then, we can Base64 encode it and use that NEW value as our cookie. You can either edit your cookie with your extension in your browser and save it then refresh the page, or inject it into the <code>authid</code> field in Burp on a page reload. Let's see what happens.<br><br>
+  <center><img src="/assets/img/advent1_2_3.png" border ="1"></center><br><br>
+  We have now logged in as user "mcinventory" using their cookie. And we can see the answer to task 3 right at the top of the list which is <code>firewall</code>.</p>
+  <hr>
+
+#### DAY TWO - Arctic Forum
+
+<p>Day two looks like another web app challenge. Today we're looking at a forum!</p>
+
+<p id="task2_1"><b>Task 1: What is the path of the hidden page?</b><br>
+  So we have a login page facing us but it wants us to enter a different page. The first place I always check is <code>/robots.txt</code>. Most pages will have a robots file that lists pages on the site that they don't want appearing on search engines. It's always helpful to just check this, however in this case that file doesn't exist.<br><br>
+
+  In this case, there are a several tools to help you go hunting. Popular ones are: <a href="https://tools.kali.org/web-applications/dirb" target="_blank">Dirb</a>, and my tool of choice <a href="https://github.com/maurosoria/dirsearch" target="_blank">Dirsearch</a>. I ran the following code in Dirsearch to check the page: <code>./dirsearch -e html -u http://ipaddresshere:3000/ -x 301,302</code>. This says search for HTML files on this server and don't show me redirects. After a short while we see the image below and the answer to task 1 which is <code>/sysadmin</code>.</p>
+  <center><img src="/assets/img/advent2_2_1.png"></center>
+  <hr>
+  <p id="task2_2"><b>Task 2: What is the password you found?</b><br>
+    So we need to find a password. Let's head over to the page at <code>http://ipaddresshere:3000/sysadmin</code> and take a look around. This page looks just like the other page except for an admin title at the top letting you know this is an admin login. There doesn't appear to be anything standing out. We should check the source code to see what's going on behind the scenes. If you right click the page and click "View Source" or some variant of that depending on your browser, you'll see a hidden comment from the developer. It says: <code>Admin portal created by arctic digital design - check out our github repo</code>.
+
+    Okay, let's head over to Github and search for <a href="https://github.com/search?q=arctic+digital+design" target="_blank">"arctic digital design"</a>. Voila! We found their Github repo, the answer to Task 2 (<code>defaultpass</code>)and a login to use on the admin portal.<br><br>
+    <center><img src="/assets/img/advent2_2.png"></center></p>
+<hr>
+<p id="task2_3"><b>Task 3: What do you have to take to the 'partay'</b><br>
+  Using the login from above, you can view the entries on the page after you login to see that the party is: BYOE(Bring your own <code>eggnog</code>).</p>
+<hr>
+
+#### DAY THREE - Evil Elf
+
+  <p>Today we're looking at a packet capture and some password cracking.</p>
+
+  <p id="task3_1"><b>Task 1: Whats the destination IP on packet number 998?</b><br>
+  If you downloaded the packet capture file and open it in <a href="https://www.wireshark.org/download.html" target="_blank">Wireshark</a> you'll probably see a lot of confusing things if you've never looked at a packet capture before. I won't go into detail about most of this because the challenge has helpful documentation already. It's asking us about packet 998, so let's scroll down until our leftmost column reads "998" and find this answer.<br>
+  <center><img src="/assets/img/task3_1.png"></center><br>
+  If you view this line you'll see that the destination IP and answer to Task 1 is <code>63.32.89.195</code></p>
+  <hr>
+
+  <p id="task3_2"><b>Task 2: What item is on the Christmas list?</b><br>
+      So we need to find something in here where we can read the plain text of what's going on. Two common protocols that are transmitted in plain text are HTTP and Telnet. If you search for HTTP in the Wireshark search bar, there are no results, but if you search Telnet, you'll get a couple packets. The best way to view them together is to right click one of the packets, then select: Follow > TCP Stream. This will display a window where you see the answer to Task 2 is <code>ps4</code> and something you'll need for your next task.<br>
+      <center><img src="/assets/img/task3_2.png"></center></p>
+<hr>
+  <p id="task3_3"><b>Task 3: Crack buddy's password!</b><br>
+Okay now we're getting into the fun stuff. This is probably one of the most nuanced tasks in hacking that everyone wants to about: cracking passwords. After this, you're going to be able to tell everyone you have cracked a password. Let's take that last line from the packet capture window we just saw that displayed buddy's username and password hash. I have stripped the excess information around it and displayed just the hash below:<br>
+<code>$6$3GvJsNPG$ZrSFprHS13divBhlaKg1rYrYLJ7m1xsYRKxlLh0A1sUc/6SUd7UvekBOtSnSyBwk3vCDqBhrgxQpkdsNN6aYP1</code><br>
+Paste this into a text file and we will just call it 'hash.txt'. Now we need to run a popular password cracking program against it called <a href="https://hashcat.net/hashcat/" target="_blank">hashcat</a>. To run hashcat for cracking this password, we'll use this:<br>
+<code>hashcat -m 1800 hash.txt /usr/share/wordlists/rockyou.txt --force</code><br>
+This says run hashcat in sha512crypt mode (1800, based on documentation and the $6$ at the front) on the file hash.txt using the wordlist rockyou (at its location). What you'll get very quickly, even on a virtual machine, is the cracked password below:<br>
+<center><img src="/assets/img/task3_3.png"></center><br>
+Now, I'm not giving you this answer. I have covered it in red so you can see where to look once a password is cracked for yourself. Go crack a password for yourself and experience the satisfaction! I've given you everything you need. Reach out to me on <a href="https://twitter.com/the4rchangel" target="_blank">Twitter</a> or Discord (4rchAngel#5193) for additional information if you need it.
+    </p>
+<hr>
+
+#### DAY FOUR - Training
+
+<p>Today we're getting into the basics of Linux! Using SSH to login and conduct basic commands on the system.</p>
+
+<p id="task4_1"><b>Task 1: How many visible files are there in the home directory?</b><br>
+A quick run of the <code>ls</code> command will list the contents of the directory and show you <code>8</code> files.
+</p>
+<hr>
+<p id="task4_2"><b>Task 2: What is the content of file5?</b><br>
+    To read a file, we can use a few commands but the one I always prefer is "cat" and <code>cat file5</code> returns the answer <code>recipes</code>.</p>
+<hr>
+<p id="task4_3"><b>Task 3: Which file contains the string 'password'?</b><br>
+Now things are getting a little more complex. We have to search for the word 'password' across all the files on our desktop and have it tell us which file it's in. This can be accomplished with:<br>
+<code>grep 'password' * /dev/null</code><br>
+After running this you'll see that the phrase 'password' can be found in <code>file6</code>
+</p>
+<hr>
+<p id="task4_4"><b>Task 4: What is the IP address in a file in the home folder?</b><br>
+This question further confused people as it requires us to search for something we don't know in several files. But we do know one thing, we are looking for an IP address. All IP addresses are going to have the same format: 1-3 numbers, seperated by a period, in 4 groups. For example: <code>123.12.1.14</code>. So how do we search for this? We want to search all files for any string matching the format of an IP address, this can be done using this regex within grep (a string search command):<br>
+<code>grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" *</code><br>
+This says search this regex against all files in my current directory. You'll see that the IP address is <code>10.0.0.05</code> in file2.
+    </p>
+<hr>
+<p id="task4_5"><b>Task 5: How many users can log into the machine?</b><br>
+Lots of people had some creative ways to figure this out however a lot of people felt that the question wasn't worded very well. They were checking common files like the <code>/etc/passwd</code> file to view the users on the computer. I simply viewed which users had folders in the <code>/home/</code> directory using <code>ls /home/</code> and we see that there are 2 users: ec2-user, and mcsysadmin. Those two, plus the 'root'(admin) account on linux systems, makes <code>3</code> users.
+    </p>
+<hr>
+<p id="task4_6"><b>Task 6: What is the sha1hash of file8?</b><br>
+File hashes are used to protect file integrity. Any time a change is made to a file, the hash changes. Even if you delete a letter, put it back, then resave it, the file is the same but the timestamp has changed so the hash changes as well to indicate something is different. They can be compared with others to determine if you're looking at the same file or not. To find the sha1hash of a file we can use:<br>
+<code>sha1sum file8</code><br>
+It will spit out the hash we're looking for which is:<code>fa67ee594358d83becdd2cb6c466b25320fd2835</code>.
+    </p>
+<hr>
+<p id="task4_7"><b>Task 7: What is mcsysadmin’s password hash?</b><br>
+Normally on Linux systems, passwords are stored as hashes in <code>/etc/shadow</code>. However this file is only traditionally viewable by administrators. Our user is not an administrator and if you try and read it you will get permission denied. However, a common practice on Linux systems is to back up files elsewhere. A common place to do this is actually in <code>/var/</code>. If you navigate to the var folder, you'll see there's actually a backup copy of the shadow file called <code>shadow.bak</code>. If you read this, you'll notice that the permissions are actually messed up and you are allowed to open it which will show you mcsysadmin's password hash which is:<br>
+<code>$6$jbosYsU/$qOYToX/hnKGjT0EscuUIiIqF8GHgokHdy/Rg/DaB.RgkrbeBXPdzpHdMLI6cQJLdFlS4gkBMzilDBYcQvu2ro/</code>.
+</p>
+<hr>
+
+#### DAY FIVE - Ho-Ho-Hosint
+
+<p>Yay an OSINT challenge! This will likely take us outside of the site to the wider internet for solutions. To start, we simply have a download of a picture of the grinch.</p>
+
+<p id="task5_1"><b>Task 1: What is Lola's date of birth? Format: Month Date, Year(e.g November 12, 2019)</b><br>
+If you're new to this, you probably went back up to the instructions and asked yourself: "Who's Lola?". You may not know, but images can contain extra data that you cant see called "EXIF Data". There are websites and plugins where you can upload an image to view the data but if you have Linux you can also run a tool called <a href="https://github.com/exiftool/exiftool" target="_blank">exiftool</a>. If you run <code>exiftool thegrinch.jpg</code> you'll see there's a "Creator" listed as <code>JLolax1</code>. This looks a lot like a username, let's head over to some social media sites and search it. You'll find that there is a <a href="https://twitter.com/JLolax1" target="_blank">Twitter account</a> with that username and it's definitely what we want. When you view it, you'll see the birthday listed as <code>December 29, 1900</code>.
+</p>
+<hr>
+<p id="task5_2"><b>Task 2: What is Lola's current occupation?</b><br>
+    At the top of her profile you can see that she says "I am one of <code>Santa's Helper</code>s".
+  </p>
+<hr>
+<p id="task5_3"><b>Task 3: What phone does Lola make?</b><br>
+Take note of the tweet she made where she said they can now make the <code>iPhone X</code>.
+</p>
+<hr>
+<p id="task5_4"><b>Task 4: What date did Lola first start her photography? Format: dd/mm/yyyy</b><br>
+This one utilizes a staple that I use regularly. Initial observation of the <a href="https://lolajohnson1998.wordpress.com/" target="_blank">website linked</a> in her Twitter profile is vague about when she started photography other than the phrase "In my years of experience". However, oftentimes websites contained information that has since been deleted. One way to view this is to check the <a href="https://web.archive.org/web/*/https://lolajohnson1998.wordpress.com/" target="_blank">"Wayback Machine"</a>.<br>
+<center><img src="/assets/img/advent5_4.png"></center><br>
+We see someone has captured a few older versions of the page here. Let's click the oldest record and see what the site looks like. When you view the page captured here, it says "I started as a freelance photographer five years ago today!". The date of the capture is October 23rd 2019, subtract 5 years and you have <code>23/10/2014</code>.
+
+</p>
+<hr>
+<p id="task5_5"><b>Task 5: What famous woman does Lola have on her page?</b><br>
+If you right click the image of the woman, you can "Copy Image Location" or something of the sort that allows you to copy the link to the photo. Simply go to <a href="https://images.google.com" target="_blank">Google Images</a>, click the little camera icon in the search bar, paste the URL you copied and click "Search by image". You'll be returned lots of similar results, all informing you the person is <code>Ada Lovelace</code>.
+    </p>
+<hr>
+
+#### DAY SIX - Data Elf-iltration
+
+  <p>We have another packet capture today, this one gets a bit more intense than the last one.</p>
+
+  <p id="task6_1"><b>Task 1: What data was exfiltrated via DNS?</b><br>
+  Answer releasing tomorrow after 24 hour delay. Reach out if you need guidance.
+</p>
+<hr>
+
+  <p id="task6_2"><b>Task 2: What did Little Timmy want to be for Christmas?</b><br>
+      Answer releasing tomorrow after 24 hour delay. Reach out if you need guidance.
+    </p>
+<hr>
+  <p id="task6_3"><b>Task 3: What was hidden within the file?</b><br>
+Answer releasing tomorrow after 24 hour delay. Reach out if you need guidance.
+</p>
+<hr>
