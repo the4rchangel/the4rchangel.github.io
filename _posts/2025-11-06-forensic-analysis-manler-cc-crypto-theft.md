@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Dissecting a Crypto Theft Operation: When JavaScript Obfuscation Hides Wallet Address Manipulation"
+title:  "Dissecting a Crypto Theft Operation: When JavaScript Obfuscation Hides a Fee-Based Scam"
 author: Michael
 tags: [ Forensics, Malware, JavaScript, Cryptocurrency ]
 featured: false
@@ -11,13 +11,15 @@ thumbnail-img: /assets/img/manler-analysis.png
 share-img: /assets/img/manler-analysis.png
 ---
 
-This post is part technical deep-dive, part forensic investigation story. I'll walk through how I discovered and analyzed a sophisticated cryptocurrency theft operation that uses advanced JavaScript obfuscation to steal funds by manipulating withdrawal forms. There are tools out there for this kind of analysis, but I built my own set of Python scripts to really understand what was happening under the hood. This isn't a step-by-step tutorial, it's more about the process of investigation, the patterns I found, and what they reveal about how these attacks work.
+This post is part technical deep-dive, part forensic investigation story. I'll walk through how I discovered and analyzed a sophisticated cryptocurrency theft operation that uses advanced JavaScript obfuscation to hide a fee-based scam. The site claimed users needed to pay a withdrawal fee to access their "mining earnings," provided instructions on how to buy Bitcoin through legitimate exchanges, and generated unique one-time wallet addresses for each victim. There are tools out there for this kind of analysis, but I built my own set of Python scripts to really understand what was happening under the hood. This isn't a step-by-step tutorial, it's more about the process of investigation, the patterns I found, and what they reveal about how these attacks work.
 
-#### THE INITIAL TIP
+#### THE SPAM EMAIL
 
-Someone reached out asking me to take a look at `https://manler.cc/payouts/account/`. They said something felt off about the site, it was supposed to be a Bitcoin mining payout page, but the behavior seemed suspicious. I'm always curious about these kinds of reports, so I fired up a browser and took a look.
+I received a spam email claiming I had an inactive Bitcoin mining account with a significant balance that needed to be withdrawn within 24 hours or it would be forfeited. Classic phishing tactics: urgency, a large sum of money, and a threat of loss. The email was flagged as suspicious by my email client, but even without that warning, the red flags were obvious, the domain, the tone, the entire premise.
 
-At first glance, it looked legitimate. Clean interface, professional design, a withdrawal form asking for wallet addresses. Nothing immediately screamed "scam" to me. But when you've been doing this long enough, you develop a sense for when something doesn't add up. The site was asking users to enter their wallet addresses to withdraw funds from their "mining earnings." That's a common enough pattern, but something about it felt engineered.
+Most people would delete it and move on. But I'm curious about how these scams actually work under the hood. So instead of deleting it, I clicked through to see what the site was doing. The email led to `https://manler.cc/payouts/account/`, which presented itself as a Bitcoin mining payout page.
+
+At first glance, it looked legitimate. Clean interface, professional design. But I already knew it was malicious, so I wasn't looking for whether it *seemed* legitimate, I was looking for *how* it was stealing funds. The site claimed users had accumulated Bitcoin mining earnings and needed to pay a withdrawal fee to access them. It displayed a payment page showing the required fee amount, provided helpful instructions on how to buy Bitcoin through legitimate exchanges like MoonPay, Coingate, Bitcoin.com, and TrustWallet, and generated a unique one-time Bitcoin wallet address for each user to send the fee to. That's a sophisticated approach, using legitimate services to build trust while funneling payments to attacker-controlled wallets.
 
 I decided to dig deeper.
 
@@ -69,7 +71,8 @@ Thirteen different payment endpoints, all pointing to `/pay.php` with different 
 This told me the attackers were running multiple payment methods, probably to:
 - Track which methods users prefer
 - Distribute stolen funds across multiple wallets
-- Make blockchain analysis harder
+- Generate unique wallet addresses per transaction to make tracking harder
+- Make blockchain analysis more difficult
 
 But I still needed to understand what the code was actually *doing*.
 
@@ -92,88 +95,69 @@ But obfuscation doesn't make code safe, it just makes it harder to analyze. I ke
 
 I wrote another script to search for specific malicious patterns. This is where it got interesting:
 
-**26 form interception patterns** detected. The code was using `addEventListener('submit')` to catch form submissions before they were sent to the server. Then it was calling `preventDefault()` to stop the normal submission process.
+**26 form interception patterns** detected. The code was using `addEventListener('submit')` to catch form submissions and handle payment processing.
 
-**147 value manipulation operations** found. This was the smoking gun. The code was reading input field values and modifying them. Specifically, it was targeting wallet address fields.
+**147 value manipulation operations** found. The code was reading and modifying form values, likely handling the payment flow and wallet address generation.
 
-**119 data exfiltration patterns**. The code was packaging up form data and sending it somewhere via XMLHttpRequest or fetch API.
+**119 data exfiltration patterns**. The code was packaging up form data and sending it to the payment endpoints via XMLHttpRequest or fetch API.
 
-**713 DOM manipulation operations**. The code was actively hiding and showing elements, probably to make the site look legitimate while hiding its malicious behavior.
+**713 DOM manipulation operations**. The code was actively hiding and showing elements, probably to display the payment interface, show the unique wallet address, and manage the countdown timer for payment expiration.
 
-Let me reconstruct what's happening here. When a user enters their wallet address and clicks withdraw:
-
-```javascript
-// Pseudo-code of what the malicious code does
-element.addEventListener('submit', function(e) {
-    e.preventDefault(); // Stop normal form submission
-    
-    const walletInput = document.getElementById('wallet-address');
-    const userAddress = walletInput.value; // Get user's address
-    const attackerAddress = 'ATTACKER_WALLET_ADDRESS'; // Attacker's address
-    walletInput.value = attackerAddress; // Replace it
-    
-    // Package and send the modified form
-    const formData = new FormData();
-    formData.append('wallet', attackerAddress);
-    formData.append('amount', userAmount);
-    
-    fetch('/pay.php?p=53', {
-        method: 'POST',
-        body: formData
-    });
-});
-```
-
-The user thinks they're withdrawing to their own wallet, but the code silently replaces their address with the attacker's address before submission. The funds go to the attacker instead.
+The attack works like this: when a user visits the site, the JavaScript communicates with the server to generate a unique one-time Bitcoin wallet address. The site displays this address along with the required fee amount and a countdown timer. The code also includes instructions on how to buy Bitcoin through legitimate exchanges, which builds trust and makes the scam seem more legitimate. When a user sends Bitcoin to the generated address, the funds go directly to the attacker's wallet. The user never receives their "mining earnings" because those earnings never existed in the first place.
 
 #### THE COMPLETE ATTACK FLOW
 
 Here's the step-by-step of how this attack works:
 
-1. User visits the site, sees a professional-looking Bitcoin mining payout interface
-2. User enters their wallet address in the withdrawal form
-3. User clicks "Withdraw"
-4. JavaScript intercepts the form submission (`addEventListener('submit')`)
-5. Code stops normal submission (`preventDefault()`)
-6. Code reads the user's wallet address from the input field
-7. Code replaces it with the attacker's wallet address
-8. Modified form data is packaged and sent to `/pay.php`
-9. Server processes the payment to the attacker's wallet
-10. User never receives their funds
+1. User receives spam email claiming they have inactive Bitcoin mining earnings
+2. User clicks through to `https://manler.cc/payouts/account/`
+3. Site displays a professional-looking payment interface showing a required withdrawal fee
+4. JavaScript generates a unique one-time Bitcoin wallet address for this specific user/session
+5. Site displays the wallet address, fee amount, and a countdown timer creating urgency
+6. Site provides helpful instructions on how to buy Bitcoin through legitimate exchanges (MoonPay, Coingate, Bitcoin.com, TrustWallet) to build trust
+7. User follows instructions, buys Bitcoin from a legitimate exchange
+8. User sends Bitcoin to the unique wallet address displayed on the site
+9. Funds go directly to the attacker's wallet
+10. User never receives their "mining earnings" because they never existed
 
-The entire attack happens invisibly in the background. The user sees a normal form submission, but their wallet address has been silently swapped out.
+The entire scam relies on social engineering: the promise of free money, the urgency of a countdown timer, and the legitimacy of linking to real Bitcoin exchanges. The unique wallet address per user makes it harder to track and block the operation.
 
 #### THE PAYMENT ENDPOINTS
 
-Those thirteen payment endpoints I found earlier? Each one likely maps to a different attacker wallet address stored server-side. The parameter `p` (like `p=53` or `p=y264`) probably tells the server which wallet to use.
+Those thirteen payment endpoints I found earlier? Each one likely maps to a different payment method or fee structure. The parameter `p` (like `p=53` or `p=y264`) probably tells the server which payment configuration to use, and the associated fee values (ranging from 48 to 268) determine how much Bitcoin the user is asked to send.
 
-I tried to find the actual wallet addresses in the client-side code, but they weren't there. The attackers are smart, they store the wallet addresses server-side in the `/pay.php` script or a database. This means:
+I tried to find the actual wallet addresses in the client-side code, but they weren't there. The attackers are smart, they generate wallet addresses dynamically server-side in the `/pay.php` script. This means:
 
-- They can change addresses without updating client code
-- Addresses aren't visible in browser dev tools
-- Different payment methods can use different wallets
-- Makes detection and blocking harder
+- Each user gets a unique wallet address, making tracking harder
+- Addresses aren't visible in browser dev tools until generated
+- Different payment methods can use different wallet pools
+- They can rotate addresses without updating client code
+- Makes detection and blocking significantly harder
 
 To find the actual wallet addresses, you'd need to either:
-- Intercept network traffic when the form is submitted
+- Intercept network traffic when the payment page loads and the wallet is generated
 - Analyze blockchain transactions from known victims
 - Get access to the server-side code (unlikely)
 
-The most practical approach is blockchain analysis, track where victim funds actually go, and that reveals the attacker wallets.
+The most practical approach is blockchain analysis, track where victim funds actually go, and that reveals the attacker wallet addresses. However, with unique addresses per transaction, this becomes more challenging.
 
 #### WHY THIS IS DANGEROUS
 
 This attack is particularly effective because:
 
-1. **It's invisible to users** - The address replacement happens in JavaScript before the form is submitted. Users have no way to know their address was changed.
+1. **Social engineering** - The combination of promised earnings, urgency (countdown timer), and helpful instructions on buying Bitcoin creates a convincing narrative. Users think they're paying a legitimate fee to access their money.
 
-2. **Sophisticated obfuscation** - With 1,007+ obfuscation techniques across 3.3MB of code, even security tools struggle to detect it. Manual analysis is extremely time-consuming.
+2. **Legitimate exchange links** - By linking to real Bitcoin exchanges (MoonPay, Coingate, Bitcoin.com, TrustWallet), the site builds trust. Users see legitimate services and assume the entire operation is legitimate.
 
-3. **Multiple attack vectors** - Thirteen different payment endpoints mean the attackers can track which methods work best, distribute funds across wallets, and make analysis harder.
+3. **Unique wallet addresses** - Each user gets a unique one-time wallet address, making it harder to track, block, or identify the operation through blockchain analysis.
 
-4. **No recovery** - Cryptocurrency transactions are irreversible. Once funds are sent, they're gone.
+4. **Sophisticated obfuscation** - With 1,007+ obfuscation techniques across 3.3MB of code, even security tools struggle to detect it. Manual analysis is extremely time-consuming.
 
-5. **Legitimate appearance** - The site looks professional. Without technical analysis, users have no reason to suspect it's malicious.
+5. **Multiple payment methods** - Thirteen different payment endpoints with varying fees mean the attackers can track which methods work best, distribute funds across wallets, and make analysis harder.
+
+6. **No recovery** - Cryptocurrency transactions are irreversible. Once funds are sent, they're gone.
+
+7. **Professional appearance** - The site looks legitimate and professional. Without technical analysis, users have no reason to suspect it's malicious.
 
 #### WHAT I LEARNED
 
@@ -181,9 +165,9 @@ This investigation reinforced a few things for me:
 
 **Obfuscation is a red flag, not protection.** When you see heavily obfuscated JavaScript, especially on financial sites, that's a warning sign. Legitimate sites don't need to hide their code this aggressively.
 
-**Form interception is a common attack vector.** The pattern of intercepting form submissions to modify data before sending is something I've seen before, but the sophistication here was notable.
+**Social engineering amplifies technical attacks.** The combination of obfuscated code with legitimate exchange links and helpful instructions makes the scam much more convincing than pure technical trickery.
 
-**Server-side storage makes detection harder.** By storing wallet addresses on the server instead of in client code, the attackers made their operation more flexible and harder to analyze.
+**Dynamic wallet generation makes tracking harder.** By generating unique wallet addresses server-side for each user, the attackers made their operation more flexible and significantly harder to track or block.
 
 **Pattern detection works.** Even with heavy obfuscation, searching for specific patterns (form interception, value manipulation, data exfiltration) can reveal malicious behavior.
 
@@ -243,11 +227,13 @@ For anyone investigating similar sites, here are the key indicators I found:
 - `https://manler.cc/_nuxt/entry.4e713294.js` - Obfuscated script
 
 **Behavioral Indicators:**
-- Form submission interception
-- Wallet address field manipulation  
+- Fee-based withdrawal requirement
+- Unique wallet address generation per user
+- Links to legitimate Bitcoin exchanges (MoonPay, Coingate, Bitcoin.com, TrustWallet)
+- Countdown timers creating urgency
 - Multiple payment endpoint configurations
 - Heavy JavaScript obfuscation (1,007+ techniques)
-- DOM manipulation to hide UI elements
+- DOM manipulation to manage payment interface
 
 **Code Patterns:**
 - 147 value manipulation operations
@@ -257,9 +243,9 @@ For anyone investigating similar sites, here are the key indicators I found:
 
 #### FINAL THOUGHTS
 
-This was a well-engineered attack. The combination of obfuscation, form interception, and server-side address storage creates a theft mechanism that's difficult to detect and analyze. But it's not perfect, the patterns are still there if you know what to look for.
+This was a well-engineered attack. The combination of obfuscation, social engineering, legitimate exchange links, and dynamic wallet generation creates a theft mechanism that's difficult to detect and analyze. But it's not perfect, the patterns are still there if you know what to look for.
 
-For users, the takeaway is simple: be extremely cautious when entering wallet addresses on any site. Verify the site's legitimacy, double-check addresses before confirming transactions, and use browser extensions that can detect address manipulation.
+For users, the takeaway is simple: if a site claims you have money you never earned and asks you to pay a fee to access it, that's a scam. Legitimate services don't require you to pay fees to withdraw your own money. Be extremely skeptical of any site that generates unique wallet addresses for "fees" or "withdrawals," especially when combined with urgency tactics like countdown timers.
 
 For security researchers, this case highlights the importance of pattern detection even when code is heavily obfuscated. The malicious behavior leaves traces that can be identified through systematic analysis.
 
